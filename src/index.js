@@ -6,8 +6,14 @@ let mountFunction = process.env.NODE_ENV === 'production'
   : ReactDOM.render;
 
 Promise.all([
-  import('core-js/stable'),
-  import('regenerator-runtime/runtime')
+  import(
+    /* webpackChunkName: "core-js" */
+    'core-js/stable'
+  ),
+  import(
+    /* webpackChunkName: "regenerator-runtime" */
+    'regenerator-runtime/runtime'
+  )
 ]).then(() => {
   mountFunction(
     <App/>,
