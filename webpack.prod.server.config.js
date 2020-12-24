@@ -1,28 +1,26 @@
-const common = require('./webpack.common.prod.config');
+const common = require('./webpack.prod.common.config');
 const path = require('path');
-const webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const pathsToClean = [
   './dist',
-  './dist-server',
-  './public'
 ].map(p => path.join(process.cwd(), p));
 
 module.exports = {
   ...common,
-  entry: "./index.js",
+  entry: "./app/ReactApp.js",
   output: {
     ...common.output,
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'dist'),
+    libraryTarget: 'commonjs2'
   },
   plugins: [
     ...common.plugins,
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: pathsToClean,
     }),
-  ]
+  ],
+  externals: [nodeExternals()],
+  target: 'node',
 };
