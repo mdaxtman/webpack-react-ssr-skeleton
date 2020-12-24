@@ -30,7 +30,17 @@ module.exports = {
                 localIdentName: '[name]__[local]__[hash:base64:5]'
               }
           }},
-          {loader: "postcss-loader"}
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  ["postcss-preset-env"],
+                  ["autoprefixer"],
+                ]
+              }
+            }
+          }
         ]
       },
       {

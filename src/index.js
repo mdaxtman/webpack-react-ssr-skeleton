@@ -1,13 +1,19 @@
-import App from './app';
+import App from './components/ReactApp';
 import ReactDOM from 'react-dom';
 
-import('core-js/stable');
-import('regenerator-runtime/runtime');
+let mountFunction = process.env.NODE_ENV === 'production'
+  ? ReactDOM.hydrate
+  : ReactDOM.render;
 
-ReactDOM.hydrate(
-  <App/>,
-  document.getElementById('root')
-);
+Promise.all([
+  import('core-js/stable'),
+  import('regenerator-runtime/runtime')
+]).then(() => {
+  mountFunction(
+    <App/>,
+    document.getElementById('root')
+  );
+});
 
 
 if (module.hot) {

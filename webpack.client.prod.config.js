@@ -1,13 +1,18 @@
-const common = require('./webpack.common.config');
+const common = require('./webpack.common.prod.config');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   ...common,
-  context: path.join(__dirname, "src"),
   entry: "./index.js",
-  mode: 'production',
   output: {
-    filename: 'main.js',
+    ...common.output,
     path: path.resolve(__dirname, 'public'),
   },
+  plugins: [
+    ...common.plugins,
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    })
+  ]
 };
