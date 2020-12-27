@@ -6,8 +6,8 @@
     "build-react-server-prod": "NODE_ENV=server webpack --config webpack.prod.server.config.js",
     "build-react-client-prod": "webpack --config webpack.prod.client.config.js",
     "build-prod-bundles": "npm run build-react-client-prod && npm run build-react-server-prod",
-    "build-server": "babel server -d dist-server",
-    "server": "npm run build-prod-bundles && npm run build-server && node dist-server/app.js",
+    "build-server": "babel app/server -d app/dist-server",
+    "server": "npm run build-prod-bundles && npm run build-server && node app/dist-server/app.js",
     "dev": "node -r @babel/register dev-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

@@ -4,7 +4,7 @@ const nodeExternals = require('webpack-node-externals');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const pathsToClean = [
-  './dist',
+  './app/dist',
 ].map(p => path.join(process.cwd(), p));
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
   entry: "./app/ReactApp.js",
   output: {
     ...common.output,
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'app/dist'),
     libraryTarget: 'umd',
     library: 'app',
     globalObject: `(typeof window !== 'undefined' ? window : global)`

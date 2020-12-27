@@ -4,8 +4,8 @@ const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const pathsToClean = [
-  './dist-server',
-  './public'
+  './app/dist-server',
+  './app/public'
 ].map(p => path.join(process.cwd(), p));
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
   entry: "./index.js",
   output: {
     ...common.output,
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'app/public'),
   },
   plugins: [
     ...common.plugins,
