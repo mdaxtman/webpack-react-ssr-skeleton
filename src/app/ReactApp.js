@@ -1,8 +1,15 @@
 import './global.css';
-import { hot } from 'react-hot-loader/root';
+export { default as store } from './store';
+import src from './kitty.png';
+import React from 'react';
 
 const App = () => {
-  return <div className='wrapper'>this is the app!</div>
+  return (
+      <React.Fragment>
+        this is the app!
+        <img src={src} />
+      </React.Fragment>
+  );
 };
 
-export default hot(App);
+export default App;

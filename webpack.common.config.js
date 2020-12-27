@@ -45,7 +45,7 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|png|jpg|gif)$/,
-        use: [`url-loader?name=[path][name].[ext]&limit=10000${isServerBundle ? '&emitFile=false' : ''}`],
+        use: [`url-loader?name=images/[name].[ext]&limit=10000${isServerBundle ? '&emitFile=false' : ''}`],
         exclude: /node_modules/
       },
       {

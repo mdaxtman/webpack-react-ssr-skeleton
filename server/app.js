@@ -2,8 +2,8 @@ import express from 'express';
 import ReactDOMServer from 'react-dom/server';
 import path from 'path';
 import Html from './Html.js';
-import ServerSideMarkup from '../dist/main.js';
-import fs from 'fs';
+import ServerSideMarkup, { store } from '../dist/main.js';
+import { Provider } from 'react-redux';
 
 const app = express();
 const port = 3000
@@ -12,13 +12,18 @@ const port = 3000
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
 
 app.get('*', (req, res) => {
-  const renderedPage = (
-    <Html >
+  const app = ReactDOMServer.renderToString(
+    <Provider store={store}>
       <ServerSideMarkup/>
-    </Html>
+    </Provider>
   );
 
-  res.send('<!DOCTYPE html>' + ReactDOMServer.renderToString(renderedPage));
+  res.send(
+    '<!DOCTYPE html>' +
+    ReactDOMServer.renderToStaticMarkup(
+      <Html app={app} state={store.getState()} />
+    )
+  );
 })
 
 app.listen(port, () => {

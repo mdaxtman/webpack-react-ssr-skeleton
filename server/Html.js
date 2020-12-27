@@ -8,7 +8,11 @@ const Html = (props) => {
         <link rel="stylesheet" href="main.css" />
       </head>
       <body>
-        <div id="root">{props.children}</div>
+        <div dangerouslySetInnerHTML={{__html: props.app}} id="root"></div>
+        {props.state
+          ? <script dangerouslySetInnerHTML={{__html: `window.__REDUX_STATE__ = ${JSON.stringify(props.state)}`}}></script>
+          : null
+        }
         <script src="main.js"/>
       </body>
     </html>

@@ -13,7 +13,9 @@ module.exports = {
   output: {
     ...common.output,
     path: path.resolve(__dirname, 'dist'),
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'umd',
+    library: 'app',
+    globalObject: `(typeof window !== 'undefined' ? window : global)`
   },
   plugins: [
     ...common.plugins,
