@@ -43,7 +43,7 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|png|jpg|gif)$/,
-        use: ['url-loader?name=images/[name].[ext]&limit=10000'],
+        use: ['url-loader?name=assets/[name].[ext]&limit=10000'],
         exclude: /node_modules/
       },
       {
