@@ -5,11 +5,11 @@ const rootReducer = {
   user: () => ({})
 };
 
-const preloadedState = (global && global.__REDUX_STATE__) || undefined;
-delete global.__REDUX_STATE__;
-
-export default configureStore({
+const createStore = (preloadedState) => configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([thunk]),
   reducer: rootReducer,
   preloadedState
 });
+
+export default createStore;
+

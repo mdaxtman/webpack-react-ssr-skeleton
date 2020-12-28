@@ -1,8 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const isServerBundle = process.env.NODE_ENV === 'server' ? true : false;
-
 module.exports = {
   context: path.join(__dirname, "src"),
   module: {
@@ -45,7 +43,7 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|png|jpg|gif)$/,
-        use: [`url-loader?name=images/[name].[ext]&limit=10000${isServerBundle ? '&emitFile=false' : ''}`],
+        use: ['url-loader?name=images/[name].[ext]&limit=10000'],
         exclude: /node_modules/
       },
       {
