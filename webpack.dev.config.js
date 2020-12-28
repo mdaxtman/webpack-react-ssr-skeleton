@@ -3,9 +3,35 @@ const webpack = require('webpack');
 
 module.exports = {
   ...common,
+  module: {
+    ...common.module,
+    rules: [
+      ...common.module.rules,
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [
+              ['@babel/env', {
+                modules: false,
+                useBuiltIns: false,
+                targets: {
+                  browsers: [
+                    'last 2 Chrome versions'
+                  ],
+                },
+              }],
+            ],
+          },
+        }
+      },
+    ]
+  },
   entry: [
     'react-hot-loader/patch',
-    "./index.js",
+    "./main.js",
     "webpack/hot/dev-server",
     "webpack-dev-server/client?http://localhost:8080"
   ],

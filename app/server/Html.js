@@ -13,7 +13,8 @@ const Html = (props) => {
           ? <script dangerouslySetInnerHTML={{__html: `window.__REDUX_STATE__ = ${JSON.stringify(props.state)}`}}></script>
           : null
         }
-        <script src="main.js"/>
+        <script type="module" src="main.bundle.js"/>
+        <script noModule src="nomodule.bundle.js"/>
       </body>
     </html>
   );
