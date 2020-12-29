@@ -4,6 +4,7 @@ import path from 'path';
 import Html from './Html.js';
 import { Provider } from 'react-redux';
 import ReactApp, { createStore } from '../public/main.bundle.js';
+import { StaticRouter } from 'react-router-dom';
 
 const app = express();
 const port = 3000
@@ -13,21 +14,31 @@ app.use(express.static(path.resolve(__dirname, '..', 'public')));
 
 app.get('*', (req, res) => {
   const store = createStore();
+  const context = {};
 
   const app = ReactDOMServer.renderToString(
-    <Provider store={store}>
-      <ReactApp/>
-    </Provider>
+    <StaticRouter location={req.url} context={context}>
+      <Provider store={store}>
+        <ReactApp/>
+      </Provider>
+    </StaticRouter>
   );
 
-  res.status(200);
+  if (context.url) {
+    res.writeHead(302, {
+      Location: context.url
+    });
+    res.end();
+  } else {
+    res.status(200);
+    res.send(
+      '<!DOCTYPE html>' +
+      ReactDOMServer.renderToStaticMarkup(
+        <Html app={app} state={store.getState()} />
+      )
+    );
+  }
 
-  res.send(
-    '<!DOCTYPE html>' +
-    ReactDOMServer.renderToStaticMarkup(
-      <Html app={app} state={store.getState()} />
-    )
-  );
 })
 
 app.listen(port, () => {

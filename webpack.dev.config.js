@@ -29,6 +29,15 @@ module.exports = {
       },
     ]
   },
+  devServer: {
+    historyApiFallback: true,
+    publicPath: '/',
+    contentBase: "src",
+    hot: true,
+    stats: {
+      colors: true
+    }
+  },
   entry: [
     'react-hot-loader/patch',
     "./main.js",
@@ -38,7 +47,8 @@ module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   output: {
-    filename: 'main.js'
+    filename: 'main.bundle.js',
+    publicPath: '/'
   },
   optimization: {
     moduleIds: 'named'

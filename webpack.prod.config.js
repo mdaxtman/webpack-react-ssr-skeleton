@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 module.exports = {
   ...common,
-  mode: 'production',
+  mode: 'development',
   entry: "./main.js",
   module: {
     ...common.module,
