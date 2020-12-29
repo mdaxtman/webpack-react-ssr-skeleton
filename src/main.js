@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 // export the store and App for server consumption.
 export { default as createStore } from './app/store';
 export default App;
+export { StaticRouter } from 'react-router-dom';
 
 export const renderApp = () => {
   const preloadedState = window.__REDUX_STATE__ || undefined;

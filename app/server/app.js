@@ -3,8 +3,7 @@ import ReactDOMServer from 'react-dom/server';
 import path from 'path';
 import Html from './Html.js';
 import { Provider } from 'react-redux';
-import ReactApp, { createStore } from '../public/main.bundle.js';
-import { StaticRouter } from 'react-router-dom';
+import ReactApp, { createStore, StaticRouter } from '../public/main.bundle.js';
 
 const app = express();
 const port = 3000

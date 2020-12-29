@@ -11,7 +11,7 @@ const App = () => {
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/about'>About</Link></li>
         </ul>
-        {/* <Switch>
+        <Switch>
           <Route exact path='/'>
             this is the test app!
           </Route>
@@ -20,7 +20,7 @@ const App = () => {
               <img className={styles.img} src={worker} />
             </div>
           </Route>
-        </Switch> */}
+        </Switch>
       </React.Fragment>
   );
 };
