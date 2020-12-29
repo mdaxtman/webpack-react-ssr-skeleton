@@ -1,5 +1,6 @@
-const Html = (props) => {
-  return (
+const Html = (html, preloadedState) => {
+  return `
+    <!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
@@ -8,16 +9,13 @@ const Html = (props) => {
         <link rel="stylesheet" href="main.css" />
       </head>
       <body>
-        <div dangerouslySetInnerHTML={{__html: props.app}} id="root"></div>
-        {props.state
-          ? <script dangerouslySetInnerHTML={{__html: `window.__REDUX_STATE__ = ${JSON.stringify(props.state)}`}}></script>
-          : null
-        }
-        <script type="module" src="main.bundle.js"/>
-        <script noModule src="nomodule.bundle.js"/>
+        <div id="root">${html}</div>
+        <script>window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}</script>
+        <script type="module" src="main.bundle.js"></script>
+        <script nomodule src="nomodule.bundle.js"></script>
       </body>
     </html>
-  );
+  `;
 };
 
 export default Html;

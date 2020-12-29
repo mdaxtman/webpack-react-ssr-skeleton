@@ -11,8 +11,9 @@ export default App;
 export { StaticRouter } from 'react-router-dom';
 
 export const renderApp = () => {
-  const preloadedState = window.__REDUX_STATE__ || undefined;
-  delete window.__REDUX_STATE__;
+  const preloadedState = window.__PRELOADED_STATE__;
+  delete window.__PRELOADED_STATE__;
+
   const store = createStore(preloadedState);
   
   const ConfiguredApp = hot(() => (

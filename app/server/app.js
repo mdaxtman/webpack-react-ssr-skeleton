@@ -1,7 +1,7 @@
 import express from 'express';
 import ReactDOMServer from 'react-dom/server';
 import path from 'path';
-import Html from './Html.js';
+import html from './html.js';
 import { Provider } from 'react-redux';
 import ReactApp, { createStore, StaticRouter } from '../public/main.bundle.js';
 
@@ -30,16 +30,13 @@ app.get('*', (req, res) => {
     res.end();
   } else {
     res.status(200);
-    res.send(
-      '<!DOCTYPE html>' +
-      ReactDOMServer.renderToStaticMarkup(
-        <Html app={app} state={store.getState()} />
-      )
-    );
+    const state = store.getState();
+    state.user.loggedIn = true;
+    res.send(html(app, state));
   }
 
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`app listening at http://localhost:${port}`)
 })
