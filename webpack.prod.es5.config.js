@@ -26,11 +26,7 @@ module.exports = {
                 useBuiltIns: 'usage',
                 corejs: { version: 3, proposals: false},
                 targets: {
-                  browsers: [
-                    '> 1%',
-                    'last 2 versions',
-                    'Firefox ESR',
-                  ],
+                  esmodules: false
                 },
               }],
             ],
