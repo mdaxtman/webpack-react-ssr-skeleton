@@ -40,7 +40,7 @@ module.exports = {
   },
   entry: [
     'react-hot-loader/patch',
-    "./main.js",
+    "./index.js",
     "webpack/hot/dev-server",
     "webpack-dev-server/client?http://localhost:8080"
   ],

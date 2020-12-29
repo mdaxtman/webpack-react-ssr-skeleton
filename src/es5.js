@@ -1,7 +1,7 @@
 /**
  * this file is strictly for legacy browsers
  */
- import {renderApp} from './main.js';
+ import {renderApp} from './index.js';
 
 // include polyfills.
 (async () => {
