@@ -1,6 +1,6 @@
 import './global.css';
 import styles from './app.css';
-import worker from './worker.svg';
+import worker from '../assets/worker.svg';
 import React from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 

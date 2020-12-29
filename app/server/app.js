@@ -30,13 +30,11 @@ app.get('*', (req, res) => {
     res.end();
   } else {
     res.status(200);
-    const state = store.getState();
-    state.user.loggedIn = true;
-    res.send(html(app, state));
+    res.send(html(app, store.getState()));
   }
 
-})
+});
 
 app.listen(port, () => {
-  console.log(`app listening at http://localhost:${port}`)
-})
+  console.log(`app listening at http://localhost:${port}`);
+});
