@@ -2,11 +2,12 @@
   "name": "webpack-react-ssr-skeleton",
   "version": "1.0.0",
   "description": "",
+  "main": "./app/dist-server/index.js", 
   "scripts": {
     "build-es5-react-prod": "webpack --config webpack.prod.es5.config.js",
     "build-react-prod": "webpack --config webpack.prod.config.js",
     "build-server": "babel app/server -d app/dist-server --presets=@babel/preset-env",
-    "start": "npm run build-es5-react-prod && npm run build-react-prod && npm run build-server && node app/dist-server/app.js",
+    "start": "npm run build-es5-react-prod && npm run build-react-prod && npm run build-server && node app/dist-server/index.js",
     "dev": "node dev-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

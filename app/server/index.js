@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import ReactApp, { createStore, StaticRouter } from '../public/main.bundle.js';
 
 const app = express();
-const port = 3000
+const port = process.env.PORT || 3000
 
 // client bundle output to here.
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
@@ -36,5 +36,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`app listening at http://localhost:${port}`);
+  console.log(`app listening at ${port}`);
 });
