@@ -2,7 +2,7 @@
   "name": "webpack-react-ssr-skeleton",
   "version": "1.0.0",
   "description": "",
-  "main": "./app/dist-server/index.js", 
+  "main": "./app/dist-server/index.js",
   "scripts": {
     "build-es5-react-prod": "webpack --config webpack.prod.es5.config.js",
     "build-react-prod": "webpack --config webpack.prod.config.js",
